@@ -1,0 +1,39 @@
+<head>
+  <title>Papa Unparse</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<template name="layout">
+  {{> yield}}
+</template>
+
+<template name="contacts">
+	<button id="export">Export All</button>
+	<br><br>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Action</th>
+		</tr>
+		{{#each contacts}}
+		<tr>
+			<td>{{name}}</td>			
+			<td><a href="{{pathFor route='contact'}}">View</a></td>
+		</tr>
+		{{/each}}
+	</table>
+</template>
+
+<template name="contact">
+	<button id="export">Export</button>
+	<br>
+	{{#with contact}}
+	<div>
+		<p><b>Name:</b> {{name}}</p>
+		<p><b>Gender:</b> {{gender}}</p>
+		<p><b>Date of Affiliation:</b> {{formatDate createdAt}}</p>
+		<p><b>Country:</b> {{address.country}}</p>
+		<p><b>City:</b> {{address.city}}</p>
+	</div>
+	{{/with}}
+</template>
